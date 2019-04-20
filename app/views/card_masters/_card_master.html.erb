@@ -1,0 +1,7 @@
+<li>
+  <%= link_to card_master.question, card_master %>
+  <%= link_to card_master.answer, card_master %>
+  | <%= link_to "edit", card_master %>
+  | <%= link_to "delete", card_master, method: :delete,
+                    data: { confirm: "You sure?" } %>
+</li>

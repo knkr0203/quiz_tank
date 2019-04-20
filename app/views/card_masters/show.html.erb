@@ -1,0 +1,19 @@
+<% provide(:title, 'Edit Card') %>
+<% provide(:button_text, 'Save changes') %>
+<h1>Update question and answer</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@card_master) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :question %>
+      <%= f.text_field :question, class: 'form-control' %>
+
+      <%= f.label :answer %>
+      <%= f.text_field :answer, class: 'form-control' %>
+
+      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<% provide(:title, 'All cards') %>
+<%= link_to "Create Cards", new_card_master_path, class: "btn btn-lg btn-primary" %>
+
+<h1>All cards</h1>
+
+<%= will_paginate %>
+
+<ul class="card_masters">
+  <%= render @card_masters %>
+</ul>
+
+<%= will_paginate %>

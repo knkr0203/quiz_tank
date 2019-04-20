@@ -1,0 +1,2 @@
+module CardMastersHelper
+end

@@ -1,0 +1,21 @@
+<% provide(:title, 'All card categories') %>
+
+<h1>Card categories</h1>
+<div class="btn_create">
+  <%= link_to "Add category", new_card_category_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= will_paginate %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="col-xs-12"></th>
+      <th class="col-xs-1"></th>
+      <th class="col-xs-1"></th>
+    </tr>
+  </thead>
+  <%= render @card_categories %>
+</table>
+
+<%= will_paginate %>

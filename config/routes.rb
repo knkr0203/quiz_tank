@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/card_masters/new', to: 'card_masters#new'
+  get '/card_masters/new/category/:category_id', to: 'card_masters#new'
+  get '/card_masters/category/:category_id', to: 'card_masters#index'
   resources :users
   resources :card_masters
+  resources :card_categories
 end

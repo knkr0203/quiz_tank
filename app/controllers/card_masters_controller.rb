@@ -2,32 +2,35 @@ class CardMastersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
 
   def index
-    @card_masters = CardMaster.paginate(page: params[:page])
-  end
-
-  def show
-    @card_master = CardMaster.find(params[:id])
+    @category_id = params[:category_id]
+    @card_masters = CardMaster.where(category_id: @category_id).paginate(page: params[:page])
   end
 
   def new
     @card_master = CardMaster.new
+    @category_id = params[:category_id]
   end
 
   def create
     @card_master = CardMaster.new(card_master_params)
+    @card_master.category_id = params[:category_id]
     if @card_master.save
       flash[:success] = "Card Created!"
-      redirect_to card_masters_path
+      redirect_to card_masters_path+'/category/'+@card_master.category_id.to_s
     else
       render 'new'
     end
+  end
+
+  def edit
+    @card_master = CardMaster.find(params[:id])
   end
 
   def update
     @card_master = CardMaster.find(params[:id])
     if @card_master.update_attributes(card_master_params)
       flash[:success] = "Question and answer updated"
-      redirect_to card_masters_url
+      redirect_to card_masters_url+'/category/'+@card_master.category_id.to_s
     else
       render 'edit'
     end

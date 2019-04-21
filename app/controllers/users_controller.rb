@@ -48,6 +48,11 @@ class UsersController < ApplicationController
 
   private
 
+    def user_params
+      params.require(:user).permit(:name, :email, :password,
+                          :password_confirmation)
+    end
+
     # before action
 
     def logged_in_user
@@ -61,11 +66,6 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def user_params
-      params.require(:user).permit(:name, :email, :password,
-                          :password_confirmation)
     end
 
     def admin_user

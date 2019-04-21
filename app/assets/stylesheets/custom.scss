@@ -25,14 +25,6 @@ textarea {
   resize: vertical;
 }
 
-.center {
-  text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
-}
-
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,14 +33,12 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
+  font-size: 1.4em;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
@@ -152,13 +142,7 @@ input {
   margin-left: 0;
 }
 
-/* Users index */
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
+.btn_create {
+  padding: 15px 0;
+  float: right;
 }

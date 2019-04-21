@@ -1,0 +1,14 @@
+<tbody>
+  <tr>
+    <td>
+      <%= link_to card_category.category, '/card_masters/category/'+card_category.id.to_s %>
+    </td>
+    <td>
+      <%= link_to "edit", edit_card_category_path(card_category.id), class: "btn btn-sm btn-success" %>
+    </td>
+    <td>
+      <%= link_to "delete", card_category, method: :delete,
+                      data: { confirm: "You sure?" }, class: "btn btn-sm btn-danger" %>
+    </td>
+  </tr>
+</tbody>

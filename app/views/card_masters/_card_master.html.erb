@@ -1,7 +1,17 @@
-<li>
-  <%= link_to card_master.question, card_master %>
-  <%= link_to card_master.answer, card_master %>
-  | <%= link_to "edit", card_master %>
-  | <%= link_to "delete", card_master, method: :delete,
-                    data: { confirm: "You sure?" } %>
-</li>
+<tbody>
+  <tr>
+    <td>
+      <%= card_master.question %>
+    </td>
+    <td>
+      <%= card_master.answer %>
+    </td>
+    <td>
+      <%= link_to "edit", edit_card_master_path(card_master), class: "btn btn-sm btn-success" %>
+    </td>
+    <td>
+      <%= link_to "delete", card_master, method: :delete,
+                    data: { confirm: "You sure?" }, class: "btn btn-sm btn-danger" %>
+    </td>
+  </tr>
+</tbody>

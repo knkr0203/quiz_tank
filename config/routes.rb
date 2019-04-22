@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get '/card_masters/new', to: 'card_masters#new'
   get '/card_masters/new/category/:category_id', to: 'card_masters#new'
   get '/card_masters/category/:category_id', to: 'card_masters#index'
+  get '/lessons/category/:category_id', to: 'lessons#show'
   resources :users
   resources :card_masters
   resources :card_categories
+  resources :lessons
 end

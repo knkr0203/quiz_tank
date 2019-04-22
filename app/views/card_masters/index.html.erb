@@ -1,6 +1,6 @@
-<% provide(:title, 'All cards') %>
+<% provide(:title, @category) %>
 
-<h1>All cards</h1>
+<h1><%= @category %></h1>
 
 <div class="btn_create">
   <%= link_to "Create card", '/card_masters/new/category/'+@category_id.to_s, class: "btn btn-lg btn-primary" %>
@@ -11,8 +11,12 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th class="col-xs-6">Question</th>
-      <th class="col-xs-6">Answer</th>
+      <th class="col-xs-2">Question</th>
+      <th class="col-xs-2">Answer</th>
+      <th class="col-xs-2">Choice1</th>
+      <th class="col-xs-2">Choice2</th>
+      <th class="col-xs-2">Choice3</th>
+      <th class="col-xs-2">Choice4</th>
       <th class="col-xs-1"></th>
       <th class="col-xs-1"></th>
     </tr>

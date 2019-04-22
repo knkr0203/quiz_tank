@@ -1,4 +1,10 @@
 <div class="center jumbotron">
-  <h1>WORD PLATES</h1>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <h1>Quiz Tank</h1>
+  <% if logged_in? %>
+    <%= link_to "Card List", card_categories_path, class: "cards_btn btn btn-lg btn-success" %>
+    <%= link_to "Take a Lesson", lessons_path, class: "btn btn-lg btn-info" %>
+  <% else %>
+    <%= link_to "Log in", login_path, class: "log_in_btn btn btn-lg btn-primary" %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
 </div>

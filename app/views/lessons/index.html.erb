@@ -1,0 +1,27 @@
+<% provide(:title, 'All card categories') %>
+
+<h1>Lessons</h1>
+
+<%= will_paginate @card_categories %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="col-xs-12"></th>
+      <th class="col-xs-1"></th>
+      <th class="col-xs-1"></th>
+    </tr>
+  </thead>
+  <% @card_categories.each do |card_category| %>
+    <tbody>
+      <tr>
+        <td class="category_line">
+          <%= link_to card_category.category, 
+              '/lessons/category/'+card_category.id.to_s %>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<%= will_paginate @card_categories %>

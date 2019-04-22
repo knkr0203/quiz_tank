@@ -1,0 +1,3 @@
+class CardTmp < ApplicationRecord
+
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_035349) do
+ActiveRecord::Schema.define(version: 2019_04_22_075425) do
 
   create_table "card_categories", force: :cascade do |t|
     t.string "category"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 2019_04_20_035349) do
     t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "choice1"
+    t.text "choice2"
+    t.text "choice3"
+    t.text "choice4"
+  end
+
+  create_table "card_tmps", force: :cascade do |t|
+    t.string "card_master_id"
+    t.string "create_user"
+    t.integer "rank"
+    t.time "next_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "category_id"
   end
 
   create_table "users", force: :cascade do |t|

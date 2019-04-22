@@ -3,6 +3,7 @@ class CardMastersController < ApplicationController
 
   def index
     @category_id = params[:category_id]
+    @category = CardCategory.find(@category_id).category
     @card_masters = CardMaster.where(category_id: @category_id).paginate(page: params[:page])
   end
 
@@ -45,7 +46,8 @@ class CardMastersController < ApplicationController
   private
 
     def card_master_params
-      params.require(:card_master).permit(:question, :answer)
+      params.require(:card_master).permit(:question, :answer,
+                  :choice1, :choice2, :choice3, :choice4)
     end
 
     # before action

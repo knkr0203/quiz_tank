@@ -1,1 +1,82 @@
-<%= @card_tmp %>
+<% provide(:title, @category) %>
+
+<h1><%= @category %></h1>
+
+<div class="btn_back">
+  <%= link_to "Back", lessons_path, class: "btn btn-lg btn-primary" %>
+</div>
+<div class="btn_finish">
+  <%= link_to "Finish", lessons_path, class: "btn btn-lg btn-success" %>
+</div>
+
+<%= will_paginate @lessons %>
+
+<table class="table table-hover lesson_tbl">
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Choice1</th>
+      <th>Choice2</th>
+      <th>Choice3</th>
+      <th>Choice4</th>
+      <th>Answer</th>
+      <th></th>
+      <th>Solved</th>
+    </tr>
+  </thead>
+    <% @lessons.each do |lesson| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= lesson.question %>
+          </td>
+          <td>
+            <%= lesson.choice1 %>
+          </td>
+          <td>
+            <%= lesson.choice2 %>
+          </td>
+          <td>
+            <%= lesson.choice3 %>
+          </td>
+          <td>
+            <%= lesson.choice4 %>
+          </td>
+          <td>
+            <span id="ans">
+              <%= lesson.answer %>
+            </span>
+          </td>
+          <td>
+            <button type="button"
+              class="btn btn-default ans_btn">
+            Show</button>
+          </td>
+          <td class="slide-button">
+            <label class="switch__label">
+              <input type="checkbox" class="switch__input"
+              data-url="<%= lesson_path(lesson.card_master_id) %>"
+              data-remote="true" data-method="post" />
+              <span class="switch__content"></span>
+              <span class="switch__circle"></span>
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+</table>
+
+<%= will_paginate @lessons %>
+
+<script type="text/javascript">
+  $('.ans_btn').click(function() {
+    ans = $(this).parent().prev().children('#ans');
+    if (ans.is(':visible')) {
+      ans.fadeOut();
+      $(this).text("Show");
+    } else {
+      ans.fadeIn();
+      $(this).text("Close");
+    }
+  });
+</script>

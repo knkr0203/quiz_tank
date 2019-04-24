@@ -1,13 +1,48 @@
 class LessonsController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update]
 
   def index
     @card_categories = CardCategory.paginate(page: params[:page])
   end
 
   def show
+    @category_id = params[:category_id]
+    @category = CardCategory.find(@category_id).category
 
+    @lessons = CardTmp.where(create_user: current_user.id)
+                      .paginate(page: params[:page])
+
+    if @lessons.empty?
+      @card_masters = CardMaster.where(category_id: @category_id)
+      @card_masters.each do |card_master|
+        lesson = CardTmp.new
+        lesson.category_id = @category_id
+        lesson.card_master_id = card_master.id
+        lesson.question = card_master.question
+        lesson.answer = card_master.answer
+        lesson.choice1 = card_master.choice1
+        lesson.choice2 = card_master.choice2
+        lesson.choice3 = card_master.choice3
+        lesson.choice4 = card_master.choice4
+        lesson.create_user = current_user.id
+        lesson.rank = 1
+        lesson.next_time = Time.zone.now
+        lesson.save
+      end
+      @lessons = CardTmp.where(create_user: current_user.id)
+                        .paginate(page: params[:page])
+    end
+
+    def update
+      @card_tmp = CardTmp.find_by(card_master_id: params[:card_master_id],
+                          create_user: current_user.id)
+      if @card_tmp.rank == '1'
+        rank = '2'
+      else
+        rank = '1'
+      end
+      @card_tmp.update_attribute(:rank, rank)
+    end
   end
 
   private

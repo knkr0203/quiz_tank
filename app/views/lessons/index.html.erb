@@ -2,14 +2,16 @@
 
 <h1>Lessons</h1>
 
+<div class="btn_back">
+  <%= link_to "Back", root_path, class: "btn btn-lg btn-primary" %>
+</div>
+
 <%= will_paginate @card_categories %>
 
-<table class="table table-hover">
+<table class="table table-hover lesson_tbl">
   <thead>
     <tr>
-      <th class="col-xs-12"></th>
-      <th class="col-xs-1"></th>
-      <th class="col-xs-1"></th>
+      <th></th>
     </tr>
   </thead>
   <% @card_categories.each do |card_category| %>

@@ -34,8 +34,7 @@ class LessonsController < ApplicationController
     end
 
     def update
-      @card_tmp = CardTmp.find_by(card_master_id: params[:card_master_id],
-                          create_user: current_user.id)
+      @card_tmp = CardTmp.find_by(id: params[:lesson_id])
       if @card_tmp.rank == 1
         rank = 2
       else

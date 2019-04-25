@@ -42,7 +42,7 @@ class CardCategoriesController < ApplicationController
   private
 
     def card_category_params
-      params.require(:card_category).permit(:category)
+      params.require(:card_category).permit(:category, :description)
     end
 
     # before action

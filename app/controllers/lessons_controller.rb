@@ -36,12 +36,13 @@ class LessonsController < ApplicationController
     def update
       @card_tmp = CardTmp.find_by(card_master_id: params[:card_master_id],
                           create_user: current_user.id)
-      if @card_tmp.rank == '1'
-        rank = '2'
+      if @card_tmp.rank == 1
+        rank = 2
       else
-        rank = '1'
+        rank = 1
       end
       @card_tmp.update_attribute(:rank, rank)
+      redirect_to '/lessons/category/'+@card_tmp.category_id.to_s
     end
   end
 

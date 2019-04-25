@@ -11,7 +11,8 @@
 <table class="table table-hover lesson_tbl">
   <thead>
     <tr>
-      <th></th>
+      <th class="col-xs-3">Category Name</th>
+      <th class="col-xs-9">Description</th>
     </tr>
   </thead>
   <% @card_categories.each do |card_category| %>
@@ -19,6 +20,10 @@
       <tr>
         <td class="category_line">
           <%= link_to card_category.category, 
+              '/lessons/category/'+card_category.id.to_s %>
+        </td>
+        <td class="category_line">
+          <%= link_to card_category.description, 
               '/lessons/category/'+card_category.id.to_s %>
         </td>
       </tr>

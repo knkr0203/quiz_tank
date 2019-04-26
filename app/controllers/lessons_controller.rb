@@ -41,7 +41,12 @@ class LessonsController < ApplicationController
         rank = 1
       end
       @card_tmp.update_attribute(:rank, rank)
-      redirect_to '/lessons/category/'+@card_tmp.category_id.to_s
+      respond_to do |format|
+        format.html {
+          redirect_to '/lessons/category/'+@card_tmp.category_id.to_s
+        }
+        format.js
+      end
     end
   end
 

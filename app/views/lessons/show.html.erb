@@ -53,19 +53,23 @@
             Show</button>
           </td>
           <td>
-            <% if lesson.rank == 1 %>
-              <%= form_for(lesson, url: "/lessons/"+lesson.id.to_s,
-                              html: { method: :post }) do |f| %>
-                <%= hidden_field_tag :card_tmp_id, lesson.id %>
-                <%= f.submit "No", class: "btn btn-danger solved_btn" %>
+            <span id="yesno">
+              <% if lesson.rank == 1 %>
+                <%= form_for(lesson, url: "/lessons/"+lesson.id.to_s,
+                                html: { method: :post },
+                                remote: true) do |f| %>
+                  <%= hidden_field_tag :card_tmp_id, lesson.id %>
+                  <%= f.submit "No", class: "btn btn-danger solved_btn" %>
+                <% end %>
+              <% else %>
+                <%= form_for(lesson, url: "/lessons/"+lesson.id.to_s,
+                                html: { method: :post },
+                                remote: true) do |f| %>
+                  <%= hidden_field_tag :card_tmp_id, lesson.id %>
+                  <%= f.submit "Yes", class: "btn btn-success solved_btn" %>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= form_for(lesson, url: "/lessons/"+lesson.id.to_s,
-                              html: { method: :post }) do |f| %>
-                <%= hidden_field_tag :card_tmp_id, lesson.id %>
-                <%= f.submit "Yes", class: "btn btn-success solved_btn" %>
-              <% end %>
-            <% end %>
+            </span>
           </td>
         </tr>
       </tbody>
@@ -83,6 +87,19 @@
     } else {
       ans.fadeIn();
       $(this).text("Close");
+    }
+  });
+
+  $('.solved_btn').click(function() {
+    solved_btn_text = $(this).val();
+    if (solved_btn_text === 'Yes') {
+      this.value = 'No';
+      $(this).css('background-color', '#c9302c');
+      $(this).css('border-color', '#ac2925');
+    } else {
+      this.value = 'Yes';
+      $(this).css('background-color', '#5cb85c');
+      $(this).css('border-color', '#4cae4c');
     }
   });
 </script>

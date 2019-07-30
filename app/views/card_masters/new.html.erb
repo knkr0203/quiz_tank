@@ -13,18 +13,6 @@
       <%= f.label :answer %>
       <%= f.text_field :answer, class: 'form-control' %>
 
-      <%= f.label :choice1 %>
-      <%= f.text_field :choice1, class: 'form-control' %>
-
-      <%= f.label :choice2 %>
-      <%= f.text_field :choice2, class: 'form-control' %>
-
-      <%= f.label :choice3 %>
-      <%= f.text_field :choice3, class: 'form-control' %>
-
-      <%= f.label :choice4 %>
-      <%= f.text_field :choice4, class: 'form-control' %>
-
       <%= hidden_field_tag :category_id, @category_id %>
 
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>

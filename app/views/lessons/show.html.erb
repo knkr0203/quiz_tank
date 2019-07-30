@@ -14,14 +14,10 @@
 <table class="table table-hover lesson_tbl">
   <thead>
     <tr>
-      <th>Question</th>
-      <th>Choice1</th>
-      <th>Choice2</th>
-      <th>Choice3</th>
-      <th>Choice4</th>
-      <th>Answer</th>
-      <th></th>
-      <th>Solved</th>
+      <th class="col-xs-3">Question</th>
+      <th class="col-xs-3">Answer</th>
+      <th class="col-xs-1"></th>
+      <th class="col-xs-1">Solved</th>
     </tr>
   </thead>
     <% @lessons.each do |lesson| %>
@@ -29,18 +25,6 @@
         <tr>
           <td>
             <%= lesson.question %>
-          </td>
-          <td>
-            <%= lesson.choice1 %>
-          </td>
-          <td>
-            <%= lesson.choice2 %>
-          </td>
-          <td>
-            <%= lesson.choice3 %>
-          </td>
-          <td>
-            <%= lesson.choice4 %>
           </td>
           <td>
             <span id="ans">

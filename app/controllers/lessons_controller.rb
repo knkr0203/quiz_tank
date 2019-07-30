@@ -9,7 +9,8 @@ class LessonsController < ApplicationController
     @category_id = params[:category_id]
     @category = CardCategory.find(@category_id).category
 
-    @lessons = CardTmp.where(create_user: current_user.id)
+    @lessons = CardTmp.where(create_user: current_user.id,
+                              category_id: @category_id)
                       .paginate(page: params[:page])
 
     if @lessons.empty?
@@ -20,10 +21,6 @@ class LessonsController < ApplicationController
         lesson.card_master_id = card_master.id
         lesson.question = card_master.question
         lesson.answer = card_master.answer
-        lesson.choice1 = card_master.choice1
-        lesson.choice2 = card_master.choice2
-        lesson.choice3 = card_master.choice3
-        lesson.choice4 = card_master.choice4
         lesson.create_user = current_user.id
         lesson.rank = 1
         lesson.next_time = Time.zone.now

@@ -38,16 +38,16 @@ class CardMastersController < ApplicationController
   end
 
   def destroy
-    CardMaster.find(params[:id]).destroy
+    delete_card = CardMaster.find(params[:id])
+    delete_card.destroy
     flash[:success] = "Card deleted"
-    redirect_to card_masters_url
+    redirect_to card_masters_url+'/category/'+delete_card.category_id.to_s
   end
 
   private
 
     def card_master_params
-      params.require(:card_master).permit(:question, :answer,
-                  :choice1, :choice2, :choice3, :choice4)
+      params.require(:card_master).permit(:question, :answer)
     end
 
     # before action

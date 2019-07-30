@@ -26,10 +26,6 @@ ActiveRecord::Schema.define(version: 2019_04_25_050214) do
     t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "choice1"
-    t.text "choice2"
-    t.text "choice3"
-    t.text "choice4"
   end
 
   create_table "card_tmps", force: :cascade do |t|
@@ -42,10 +38,6 @@ ActiveRecord::Schema.define(version: 2019_04_25_050214) do
     t.integer "category_id"
     t.text "question"
     t.text "answer"
-    t.text "choice1"
-    t.text "choice2"
-    t.text "choice3"
-    t.text "choice4"
   end
 
   create_table "users", force: :cascade do |t|

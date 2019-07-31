@@ -14,10 +14,10 @@
 <table class="table table-hover lesson_tbl">
   <thead>
     <tr>
-      <th class="col-xs-3">Question</th>
-      <th class="col-xs-3">Answer</th>
+      <th class="col-xs-3 question-header">Question</th>
+      <th class="col-xs-3 answer-header">Answer</th>
       <th class="col-xs-1"></th>
-      <th class="col-xs-1">Solved</th>
+      <th class="col-xs-1 solved-header">Solved</th>
     </tr>
   </thead>
     <% @lessons.each do |lesson| %>
@@ -34,7 +34,7 @@
           <td>
             <button type="button"
               class="btn btn-default ans_btn">
-            Show</button>
+            Open</button>
           </td>
           <td>
             <span id="yesno">
@@ -67,7 +67,7 @@
     ans = $(this).parent().prev().children('#ans');
     if (ans.is(':visible')) {
       ans.fadeOut();
-      $(this).text("Show");
+      $(this).text("Open");
     } else {
       ans.fadeIn();
       $(this).text("Close");
